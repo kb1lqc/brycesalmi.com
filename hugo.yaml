@@ -1,10 +1,4 @@
-baseURL: https://example.org/
+baseURL: https://brycesalmi.com/
 locale: en-us
-title: My New Hugo Project
+title: Bryce Salmi
 theme: ["PaperMod"]
-
-module:
-  mounts:
-    - source: content
-      target: content
-      files: "**"
