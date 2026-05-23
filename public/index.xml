@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>My New Hugo Project</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on My New Hugo Project</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FaradayRF - The Familiar Choice</title>
+      <link>http://localhost:1313/posts/faradayrf/</link>
+      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/faradayrf/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Faraday was a single board RF transceiver with GPS functionality and analog to digital inputs powered by USB or a battery which operated in the 33cm (902-928MHz) amateur radio band. My twin brother Brent Salmi and I formed a partnership, FaradayRF, after hours during our time at SpaceX.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;launch&#34;&gt;Launch&lt;/h2&gt;
+&lt;p&gt;On the side of a desolate farmland road in Buttonwillow, CA on August 14, 2016 in mid-day 105°F heat, my brother Brent and I launched Faraday under a cluster of 15 party balloons, two of them Mylar for radar visibility, and a parachute. We built a simple 112 gram high-altitude balloon payload tasked with proving our system could be used in real-world missions with amateur radio. Brent had been President and I Vice-President of the RIT Amateur Radio Club, K2GXT, when it designed, built, and flew the RITCHIE-1 high altitude balloon in May 2011 to 96,305ft in upstate New York. RITCHIE-1 had been a four-pound regulated flight. Faraday came in at 112 grams, well under the FAR 101 threshold, by design.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
