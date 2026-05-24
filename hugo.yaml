@@ -2,3 +2,22 @@ baseURL: https://brycesalmi.com/
 locale: en-us
 title: Bryce Salmi
 theme: ["PaperMod"]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+menu:
+  main:
+    - name: About
+      url: /about/
+      weight: 10
+    - name: Posts
+      url: /posts/
+      weight: 20
+
+params:
+  socialIcons:
+    - name: linkedin
+      url: "https://www.linkedin.com/in/brycesalmi/"

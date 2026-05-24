@@ -19,5 +19,14 @@
 &lt;h2 id=&#34;launch&#34;&gt;Launch&lt;/h2&gt;
 &lt;p&gt;On the side of a desolate farmland road in Buttonwillow, CA on August 14, 2016 in mid-day 105°F heat, my brother Brent and I launched Faraday under a cluster of 15 party balloons, two of them Mylar for radar visibility, and a parachute. We built a simple 112 gram high-altitude balloon payload tasked with proving our system could be used in real-world missions with amateur radio. Brent had been President and I Vice-President of the RIT Amateur Radio Club, K2GXT, when it designed, built, and flew the RITCHIE-1 high altitude balloon in May 2011 to 96,305ft in upstate New York. RITCHIE-1 had been a four-pound regulated flight. Faraday came in at 112 grams, well under the FAR 101 threshold, by design.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;img src=&#34;http://localhost:1313/images/profile.jpeg&#34; alt=&#34;Bryce Salmi&#34; style=&#34;float: right; margin: 0 0 1rem 2rem; width: 220px; border-radius: 4px;&#34;&gt;
+&lt;p&gt;I&amp;rsquo;m Bryce Salmi, an Electrical Engineer in the South Bay of Los Angeles. My interest in amateur radio led me to my profession and my personal projects helped kick-start my career out here obtaining an internship at SpaceX in 2011.&lt;/p&gt;
+&lt;p&gt;My hardware has flown to space on Falcon 9 thousands of times, Cargo Dragon, Crew Dragon, and Terran 1. Cubesat hardware I built has flown to orbit aboard an Atlas V, Falcon 9, Launcher 1, and PSLV.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
