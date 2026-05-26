@@ -1,35 +1,21 @@
 ---
-categories:
-  - "[[Posts]]"
-author:
-url:
-created: 2026-05-05
-published:
-topics:
-  - FaradayRF
-  - Electrical Engineering
-  - PCB Manufacturing
-  - Avionics
-  - Business
-status:
-Thesis: The familiar choice is the dangerous one.
-date: 2026-05-23
-draft: "false"
-title: FaradayRF - The Familiar Choice
+author: Bryce Salmi
+date: 2026-05-26
+draft: false
+title: FaradayRF
+description: "An open-source UHF digital radio transceiver. What we built, what it taught us, and why it failed."
 ---
->Faraday was a single board RF transceiver with GPS functionality and analog to digital inputs powered by USB or a battery which operated in the 33cm (902-928MHz) amateur radio band. My twin brother Brent Salmi and I formed a partnership, FaradayRF, after hours during our time at SpaceX.
-
 ## Launch
 
-![Preparing the Faraday balloon payload for launch, Buttonwillow CA, August 2016](/images/posts/faradayrf/FaradayBalloon.jpeg)
+{{< figure src="/images/posts/faradayrf/FaradayBalloon.jpeg" caption="Preparing the Faraday balloon payload for launch, Buttonwillow CA, August 2016" >}}
 
 On the side of a desolate farmland road in Buttonwillow, CA on August 14, 2016 in mid-day 105°F heat, my brother Brent and I launched Faraday under a cluster of 15 party balloons, two of them Mylar for radar visibility, and a parachute. We built a simple 112 gram high-altitude balloon payload tasked with proving our system could be used in real-world missions with amateur radio. Brent had been President and I Vice-President of the RIT Amateur Radio Club, K2GXT, when it designed, built, and flew the RITCHIE-1 high altitude balloon in May 2011 to 96,305ft in upstate New York. RITCHIE-1 had been a four-pound regulated flight. Faraday came in at 112 grams, well under the FAR 101 threshold, by design.
 
-![The 112 gram Faraday payload ready for flight — Faraday board, GPS, antenna, and cut-down mechanism in a tupperware enclosure](/images/posts/faradayrf/FaradayBalloonPayload.jpeg)
+{{< figure src="/images/posts/faradayrf/FaradayBalloonPayload.jpeg" caption="The 112 gram Faraday payload ready for flight. Faraday board, GPS, antenna, and cut-down mechanism in a tupperware enclosure." >}}
 
 As SpaceX hardware engineers we followed the mantra “things that don’t have due dates don’t get done”. Hobby projects were not immune. RITCHIE-1 had taught us that balloon missions are an effective stress test of embedded design, system architecture, and mission planning. Setting a launch date helped prioritize our work on only what mattered for mission success: link budgets, telemetry parsing, mission sequences, and two-way communications.
 
-For two and a half hours we followed the balloon in our chase car receiving 8,929 telemetry packets with a 28.4-mile link closure showing GPS altitude, velocity, and location. Faraday peaked at 31,795 feet altitude before a balloon popped causing a slow descent. We’d planned for this and included a failsafe timer to automatically cut the balloons away. Telemetry indicated that the burn wire drew high current but the cable did not sever: descent rate was unchanged. The payload was lost traveling East at 14,000 feet in the Tehachapi Mountains when it outran our ability to keep up with it. The cut-down burn wire was rudimentary; it should have been tested more if payload recovery was a priority.
+For two and a half hours we followed the balloon in our chase car receiving 8,929 telemetry packets with a 10-mile link closure showing GPS altitude, velocity, and location. Faraday peaked at 31,795 feet altitude before a balloon popped causing a slow descent. We’d planned for this and included a failsafe timer to automatically cut the balloons away. Telemetry indicated that the burn wire drew high current but the cable did not sever: descent rate was unchanged. The payload was lost traveling East at 14,000 feet in the Tehachapi Mountains when it outran our ability to keep up with it. The cut-down burn wire was rudimentary; it should have been tested more if payload recovery was a priority.
 
 Faraday worked so well on launch day because it was familiar. The project failed for the same reason.
 
@@ -53,7 +39,7 @@ Most Faradays would ultimately be used attached to computer via USB as infrastru
 
 ## Faraday Hardware Was Intentional
 
-![Faraday REV. D1 — CC430 microcontroller, RF chain, and SMA antenna connector](/images/posts/faradayrf/FaradayPCBA.jpeg)
+{{< figure src="/images/posts/faradayrf/FaradayPCBA.jpeg" caption="Faraday REV. D1. CC430 microcontroller, RF chain, and SMA antenna connector." >}}
 
 The hardware was elegantly simple and manufacturable. It performed. The power architecture was based on USB 5V and external power up to 17V. An ideal diode cleanly transferred power between the higher voltage source. A DC/DC step-down converter based on the TPS562201 efficiently supplied the expected 500mA at 3.3V during transmissions. The microcontroller controlled a low-side MOSFET switch intended to complete the circuit for any load to ground. The MOSFET switch was paired on the connector with access to the external power rail as that would be the most convenient voltage rail for high-power loads. A pull-down resistor guaranteed OFF MOSFET state during power cycling when it’s possible the GPIO pin is high-impedance.
 
@@ -69,7 +55,7 @@ The PCB was designed for our intended manufacturer who was a startup called PCB:
 
 All required components were placed on the top side with only a single JTAG connector on the bottom we could quickly hand solder. All through-hole components, button, GPS module, and bottom JTAG connector were DNP as we planned to install them by hand. A choice which helped with product configurations and could be automated in the future.
 
-![Faraday gerber layers with PCB:NG four-layer stackup](/images/posts/faradayrf/FaradayGerbers.jpg)
+{{< figure src="/images/posts/faradayrf/FaradayGerbers.jpg" caption="Faraday gerber layers with PCB:NG four-layer stackup" >}}
 
 Manufacturable choices were a mindset. The PCB was designed to be tab route panelized with four mouse-bite areas indicated on each side allowing PCB:NG to quickly panelize with their proprietary method. Our gerbers clearly conveyed design intent with the routing path defined and notes indicating the routing area. We also embedded within the gerbers the intended stackup for clarity.
 
@@ -79,7 +65,7 @@ The Antenova GPS module required copper pullback below its GPS antenna. All copp
 
 ## Production Hell
 
-![Faraday production batch — 109 units built across several runs](/images/posts/faradayrf/FaradayProduction.jpeg)
+{{< figure src="/images/posts/faradayrf/FaradayProduction.jpeg" caption="Faraday production batch — 109 units built across several runs" >}}
 
 We entered production hell quickly. Not a single customer realized it. We built 109 Faraday units over several batches. The first 60 units had 23 boards with a functional error; a 38% failure rate and the issues appeared random. We received a second batch of 25 more units with 18 failing; a 72% failure rate and the issues were now more concentrated around the CC430 boot path. We extensively worked with PCB:NG to root cause and mitigate the issues: the second batch was traced to a consumable change made mid-run. Our last batch showed zero failures across units tested. Our production screening tests were working.
 

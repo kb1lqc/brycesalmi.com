@@ -7,14 +7,6 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     
-    <lastBuildDate>Sat, 23 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[[Posts]]</title>
-      <link>http://localhost:1313/categories/posts/</link>
-      <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/posts/</guid>
-      <description></description>
-    </item>
-    
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
