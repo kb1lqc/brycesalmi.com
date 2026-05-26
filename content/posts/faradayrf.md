@@ -39,7 +39,7 @@ Most Faradays would ultimately be used attached to computer via USB as infrastru
 
 ## Faraday Hardware Was Intentional
 
-{{< figure src="/images/posts/faradayrf/FaradayPCBA.jpeg" caption="Faraday REV. D1. CC430 microcontroller, RF chain, and SMA antenna connector." >}}
+{{< figure src="/images/posts/faradayrf/FaradayPCBA.jpeg" caption="Faraday: CC430 microcontroller, RF chain, and SMA antenna connector." >}}
 
 The hardware was elegantly simple and manufacturable. It performed. The power architecture was based on USB 5V and external power up to 17V. An ideal diode cleanly transferred power between the higher voltage source. A DC/DC step-down converter based on the TPS562201 efficiently supplied the expected 500mA at 3.3V during transmissions. The microcontroller controlled a low-side MOSFET switch intended to complete the circuit for any load to ground. The MOSFET switch was paired on the connector with access to the external power rail as that would be the most convenient voltage rail for high-power loads. A pull-down resistor guaranteed OFF MOSFET state during power cycling when it’s possible the GPIO pin is high-impedance.
 
@@ -55,17 +55,18 @@ The PCB was designed for our intended manufacturer who was a startup called PCB:
 
 All required components were placed on the top side with only a single JTAG connector on the bottom we could quickly hand solder. All through-hole components, button, GPS module, and bottom JTAG connector were DNP as we planned to install them by hand. A choice which helped with product configurations and could be automated in the future.
 
-{{< figure src="/images/posts/faradayrf/FaradayGerbers.jpg" caption="Faraday gerber layers with PCB:NG four-layer stackup" >}}
+{{< figure src="/images/posts/faradayrf/FaradayGerbers.jpg" caption="Faraday gerber layers with PCB:NG four-layer stackup. [FaradayRF-Hardware](https://github.com/FaradayRF/FaradayRF-Hardware)" >}}
 
 Manufacturable choices were a mindset. The PCB was designed to be tab route panelized with four mouse-bite areas indicated on each side allowing PCB:NG to quickly panelize with their proprietary method. Our gerbers clearly conveyed design intent with the routing path defined and notes indicating the routing area. We also embedded within the gerbers the intended stackup for clarity.
 
 For RF routing on the top and bottom layers, I designed for our known stackup. The 25.6 mil wide 50Ω RF traces 13 mils above a ground plane with an FR4 dielectric constant of 3.8 results in a 48Ω trace. The beauty of engineering is that even with this mismatch we’d expect return loss to be less than that of the SMA connector in the design. Negligible. I’ll take that simplicity and move on. At 900 MHz, the free-space wavelength is about 33 cm, hence the 33cm amateur band. In FR4 with εr = 3.8, that wavelength shortens to roughly 6.3 inches. Traces start acting as transmission lines around 1/10th wavelength or longer. So any trace longer than 0.63 inches needs to be 50Ω transmission line; I kept the entire distance from SAW filter input to SMA connector at 1 inch.
 
-The Antenova GPS module required copper pullback below its GPS antenna. All copper on all four layers below the GPS antenna area as defined by the datasheet were pulled back. The module was also intentionally placed on the opposite area of the board from the 900MHz RF circuitry isolating ground noise between the two high frequency systems. The GPS was quick to lock and reliable. 
+The Antenova GPS module required copper pullback below its GPS antenna. All copper on all four layers below the GPS antenna area as defined by the datasheet were pulled back. The module was also intentionally placed on the opposite area of the board from the 900MHz RF circuitry isolating ground noise between the two high frequency systems. The GPS was quick to lock and reliable.
+
 
 ## Production Hell
 
-{{< figure src="/images/posts/faradayrf/FaradayProduction.jpeg" caption="Faraday production batch — 109 units built across several runs" >}}
+{{< figure src="/images/posts/faradayrf/FaradayProduction.jpeg" caption="Faraday production batch, 109 units built across several runs" >}}
 
 We entered production hell quickly. Not a single customer realized it. We built 109 Faraday units over several batches. The first 60 units had 23 boards with a functional error; a 38% failure rate and the issues appeared random. We received a second batch of 25 more units with 18 failing; a 72% failure rate and the issues were now more concentrated around the CC430 boot path. We extensively worked with PCB:NG to root cause and mitigate the issues: the second batch was traced to a consumable change made mid-run. Our last batch showed zero failures across units tested. Our production screening tests were working.
 
