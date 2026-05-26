@@ -20,13 +20,23 @@ title: FaradayRF - The Familiar Choice
 >Faraday was a single board RF transceiver with GPS functionality and analog to digital inputs powered by USB or a battery which operated in the 33cm (902-928MHz) amateur radio band. My twin brother Brent Salmi and I formed a partnership, FaradayRF, after hours during our time at SpaceX.
 
 ## Launch
+
+![Preparing the Faraday balloon payload for launch, Buttonwillow CA, August 2016](/images/posts/faradayrf/FaradayBalloon.jpeg)
+
 On the side of a desolate farmland road in Buttonwillow, CA on August 14, 2016 in mid-day 105°F heat, my brother Brent and I launched Faraday under a cluster of 15 party balloons, two of them Mylar for radar visibility, and a parachute. We built a simple 112 gram high-altitude balloon payload tasked with proving our system could be used in real-world missions with amateur radio. Brent had been President and I Vice-President of the RIT Amateur Radio Club, K2GXT, when it designed, built, and flew the RITCHIE-1 high altitude balloon in May 2011 to 96,305ft in upstate New York. RITCHIE-1 had been a four-pound regulated flight. Faraday came in at 112 grams, well under the FAR 101 threshold, by design.
+
+![The 112 gram Faraday payload ready for flight — Faraday board, GPS, antenna, and cut-down mechanism in a tupperware enclosure](/images/posts/faradayrf/FaradayBalloonPayload.jpeg)
 
 As SpaceX hardware engineers we followed the mantra “things that don’t have due dates don’t get done”. Hobby projects were not immune. RITCHIE-1 had taught us that balloon missions are an effective stress test of embedded design, system architecture, and mission planning. Setting a launch date helped prioritize our work on only what mattered for mission success: link budgets, telemetry parsing, mission sequences, and two-way communications.
 
 For two and a half hours we followed the balloon in our chase car receiving 8,929 telemetry packets with a 28.4-mile link closure showing GPS altitude, velocity, and location. Faraday peaked at 31,795 feet altitude before a balloon popped causing a slow descent. We’d planned for this and included a failsafe timer to automatically cut the balloons away. Telemetry indicated that the burn wire drew high current but the cable did not sever: descent rate was unchanged. The payload was lost traveling East at 14,000 feet in the Tehachapi Mountains when it outran our ability to keep up with it. The cut-down burn wire was rudimentary; it should have been tested more if payload recovery was a priority.
 
 Faraday worked so well on launch day because it was familiar. The project failed for the same reason.
+
+<iframe src="/faraday-flight.html" width="100%" height="500" frameborder="0" scrolling="no"></iframe>
+
+<iframe src="/faraday-map.html" width="100%" height="520" frameborder="0" scrolling="no"></iframe>
+
 ## What Faraday Aimed To Accomplish
 Amateur radio defaulted to what was familiar: voice communications and cold-war era digital communications. In 2015 the most widely used digital network was still the 1200 baud automatic packet reporting system (APRS) developed by Bob Bruninga in the late 1980s. Many radio amateurs were interested in voice communications, and the prevailing digital advancement was D-STAR based on telephone-style communications. The hobby used new technology to recreate familiar capabilities.
 
@@ -42,6 +52,9 @@ We chose to base Faraday around the CC430 from Texas Instruments because Brent a
 Most Faradays would ultimately be used attached to computer via USB as infrastructure, not battery operated. The low-power operation enabled remote missions out of the box. We dismissed this use-case's impact on the requirements: bottlenecking feature development to the two of us for several years. We chose what we knew. That was a mistake.
 
 ## Faraday Hardware Was Intentional
+
+![Faraday REV. D1 — CC430 microcontroller, RF chain, and SMA antenna connector](/images/posts/faradayrf/FaradayPCBA.jpeg)
+
 The hardware was elegantly simple and manufacturable. It performed. The power architecture was based on USB 5V and external power up to 17V. An ideal diode cleanly transferred power between the higher voltage source. A DC/DC step-down converter based on the TPS562201 efficiently supplied the expected 500mA at 3.3V during transmissions. The microcontroller controlled a low-side MOSFET switch intended to complete the circuit for any load to ground. The MOSFET switch was paired on the connector with access to the external power rail as that would be the most convenient voltage rail for high-power loads. A pull-down resistor guaranteed OFF MOSFET state during power cycling when it’s possible the GPIO pin is high-impedance.
 
 The CC430 implementation allocated eight GPIO pins, six 12-bit Analog to Digital Converter (ADC) pins, a button, and two LEDs for general use. ADCs were protected from overvoltage faults up to the maximum rated input voltage by limiting current into the internal ESD protection diodes. This was accomplished using the RC anti-aliasing filter series resistance. A simple method used in fault tolerant avionics that adds no cost. The ADC anti-aliasing filters were set at 16 Hz using available component values. ADC2 was unprotected to support external filtering.
@@ -56,6 +69,8 @@ The PCB was designed for our intended manufacturer who was a startup called PCB:
 
 All required components were placed on the top side with only a single JTAG connector on the bottom we could quickly hand solder. All through-hole components, button, GPS module, and bottom JTAG connector were DNP as we planned to install them by hand. A choice which helped with product configurations and could be automated in the future.
 
+![Faraday gerber layers with PCB:NG four-layer stackup](/images/posts/faradayrf/FaradayGerbers.jpg)
+
 Manufacturable choices were a mindset. The PCB was designed to be tab route panelized with four mouse-bite areas indicated on each side allowing PCB:NG to quickly panelize with their proprietary method. Our gerbers clearly conveyed design intent with the routing path defined and notes indicating the routing area. We also embedded within the gerbers the intended stackup for clarity.
 
 For RF routing on the top and bottom layers, I designed for our known stackup. The 25.6 mil wide 50Ω RF traces 13 mils above a ground plane with an FR4 dielectric constant of 3.8 results in a 48Ω trace. The beauty of engineering is that even with this mismatch we’d expect return loss to be less than that of the SMA connector in the design. Negligible. I’ll take that simplicity and move on. At 900 MHz, the free-space wavelength is about 33 cm, hence the 33cm amateur band. In FR4 with εr = 3.8, that wavelength shortens to roughly 6.3 inches. Traces start acting as transmission lines around 1/10th wavelength or longer. So any trace longer than 0.63 inches needs to be 50Ω transmission line; I kept the entire distance from SAW filter input to SMA connector at 1 inch.
@@ -63,6 +78,9 @@ For RF routing on the top and bottom layers, I designed for our known stackup. T
 The Antenova GPS module required copper pullback below its GPS antenna. All copper on all four layers below the GPS antenna area as defined by the datasheet were pulled back. The module was also intentionally placed on the opposite area of the board from the 900MHz RF circuitry isolating ground noise between the two high frequency systems. The GPS was quick to lock and reliable. 
 
 ## Production Hell
+
+![Faraday production batch — 109 units built across several runs](/images/posts/faradayrf/FaradayProduction.jpeg)
+
 We entered production hell quickly. Not a single customer realized it. We built 109 Faraday units over several batches. The first 60 units had 23 boards with a functional error; a 38% failure rate and the issues appeared random. We received a second batch of 25 more units with 18 failing; a 72% failure rate and the issues were now more concentrated around the CC430 boot path. We extensively worked with PCB:NG to root cause and mitigate the issues: the second batch was traced to a consumable change made mid-run. Our last batch showed zero failures across units tested. Our production screening tests were working.
 
 ## The Network Problem
