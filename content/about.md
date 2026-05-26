@@ -1,3 +1,8 @@
+---
+build:
+  list: never
+---
+
 <img src="/images/profile.jpeg" alt="Bryce Salmi" style="float: right; margin: 0 0 1rem 2rem; width: 220px; border-radius: 4px;">
 
 I'm Bryce Salmi, an Electrical Engineer in the South Bay of Los Angeles. My interest in amateur radio led me to my profession and my personal projects helped kick-start my career out here obtaining an internship at SpaceX in 2011.
