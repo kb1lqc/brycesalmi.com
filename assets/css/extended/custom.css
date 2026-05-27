@@ -1,1 +1,17 @@
 :root { --main-width: 900px; }
+
+.first-entry.home-info {
+    min-height: unset;
+    justify-content: flex-start;
+    margin-bottom: var(--gap);
+}
+
+.post-entry .entry-cover {
+    max-height: 240px;
+    overflow: hidden;
+}
+
+.post-entry .entry-cover img {
+    height: 240px;
+    object-fit: cover;
+}

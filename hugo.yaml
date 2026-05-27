@@ -2,6 +2,7 @@ baseURL: https://brycesalmi.com/
 locale: en-us
 title: Bryce Salmi
 theme: ["PaperMod"]
+env: production
 
 markup:
   goldmark:
@@ -13,11 +14,19 @@ menu:
     - name: About
       url: /about/
       weight: 10
-    - name: Posts
+    - name: Essays
       url: /posts/
       weight: 20
 
 params:
+  description: "Electrical engineer. Hardware that has flown on Falcon 9, Cargo Dragon, Crew Dragon, and Terran 1."
+  homeInfoParams:
+    Title: "Bryce Salmi"
+    Content: >
+      I'm an electrical engineer in the South Bay of Los Angeles. My hardware has flown to space on
+      Falcon 9, Cargo Dragon, Crew Dragon, and Terran 1. I write here about technical problems I've worked on.
+  footer:
+    text: '[RSS](/index.xml)'
   socialIcons:
     - name: linkedin
       url: "https://www.linkedin.com/in/brycesalmi/"

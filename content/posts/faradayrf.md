@@ -4,6 +4,11 @@ date: 2026-05-26
 draft: false
 title: FaradayRF
 description: "An open-source UHF digital radio transceiver. What we built, what it taught us, and why it failed."
+cover:
+  image: /images/posts/faradayrf/FaradayPCBA.jpeg
+  alt: "Faraday: CC430 microcontroller, RF chain, and SMA antenna connector"
+  relative: false
+  hiddenInSingle: true
 ---
 ## Launch
 
