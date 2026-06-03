@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Requirements Are A Property Of The Design | Bryce Salmi</title>
+<meta name="keywords" content="">
+<meta name="description" content="Three responsible engineers and a full qualification campaign missed a circuit that was 3x worse than its requirement. Two hours in Excel found it. Requirements verification is a property of the design, not the test.">
+<meta name="author" content="Bryce Salmi">
+<link rel="canonical" href="http://localhost:1313/posts/requirements-are-a-property-of-the-design/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.22b013bfe073a450c13fe1093983adfcd9cf0740e94c5132b550c592ea44b256.css" integrity="sha256-IrATv&#43;BzpFDBP&#43;EJOYOt/NnPB0DpTFEytVDFkupEslY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/requirements-are-a-property-of-the-design/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Bryce Salmi (Alt + H)">Bryce Salmi</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts/" title="Essays">
+                    <span>Essays</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Requirements Are A Property Of The Design
+    </h1>
+    <div class="post-meta">
+
+<span title='2026-06-03 00:00:00 +0000 UTC'>June 3, 2026</span>&nbsp;·&nbsp;<span>Bryce Salmi</span>
+
+</div>
+  </header> 
+  <div class="post-content md-content"><p>Every other functional test would fail. The sensor interface error was out of bounds; nominal as it turns out. The technician writes a discrepancy ticket and moves on to another work order. This unit will pause testing for several days and sometimes several weeks. The responsible engineer would disposition the discrepancy use-as-is without even plotting the time-series data. The design engineer had attributed the out-of-bounds performance to noise, failing to realize this was a circuit that didn’t always meet requirements. Every responsible engineer since had inherited that disposition.</p>
+<p>This continued for three years. The unit was qualified to <a href="https://everyspec.com/USAF/USAF-SMC/SMC-S-016_05SEP2014_51608/">SMC-S-016</a>. The test bounds were the requirements and there was no budget to redesign the unit. Three responsible engineers had shepherded this unit serially from design to volume production. Then I joined.</p>
+<p>&ldquo;What&rsquo;s the worst-case performance under temperature and manufacturing tolerance of the channel?&rdquo; One engineering leader dismissed the question, citing we were a risk-tolerant organization that prided itself on moving fast; worst-case analysis is too conservative. Each unit was being tested to prove it met requirements yet no engineer could tell me the design actually met them. Using Microsoft Excel I worked through the design in two hours and found the answer: 3x worse than the requirement.</p>
+<p>Nearly every unit was use-as-is when it failed for this specific failure-mode and installed anyway. We were rolling the dice and didn&rsquo;t realize it for three years. The first batch of vehicles with this hardware was set to fly soon. A software fix mitigated potential vehicle loss, but only because I asked a question that belongs in design, not qualification or acceptance.</p>
+<p>Stop using acceptance and qualification tests to verify requirements while expecting to deliver on-time and on-budget. Self-imposed design requirements are owned by the engineer and can be verified, added, modified, or deleted at will. Requirements verification is a property of the design, not of the unit. SMC-S-016 expects tailoring of contractual requirements while legacy culture expects compliance: accept the risks you can afford and avoid the risks you cannot.</p>
+<h1 id="qualification-is-about-process-and-environments-not-design">Qualification Is About Process and Environments Not Design<a hidden class="anchor" aria-hidden="true" href="#qualification-is-about-process-and-environments-not-design">#</a></h1>
+<p>Qualification &ldquo;&hellip; <em>is conducted to demonstrate that the design, manufacturing process, and acceptance program <strong>produce</strong> hardware/software meeting specification requirements with adequate margin to accommodate multiple rework and test cycles</em>&rdquo; (SMC-S-016, §4.2.2). Qualification verifies the production step, not the design. Acceptance verifies you built what you designed. By confirming your design will always meet requirements in analysis wherever possible you shift the approach to acceptance and qualification towards environmental and manufacturing risk reduction. The question shifts from “does this design work?” to “can I manufacture my design that I know will meet requirements?”</p>
+<p>The assumption of qualification is that the design is already valid. &ldquo;<em>The hardware subjected to qualification testing shall be produced in the same factory from the same drawings, using the same parts, materials, tooling, manufacturing process, and level of personnel competency as used for flight hardware</em>&rdquo; (SMC-S-016, §4.3.2.1). This implies a high level of certainty in the design. Notably, the ideal qualification unit is a randomly selected acceptance tested flight unit. During qualification, &ldquo;<em>Performance testing demonstrates design margins and specification compliance&hellip;</em>&rdquo; (SMC-S-016, §3.36). You are confirming a known answer; certainty earned prior to qualification.</p>
+<p>You are expected to tailor requirements to acceptable risk (SMC-S-016, §1.4). Every program I have worked on has had a finite budget and schedule. When physics bounds a requirement then analysis earns its place. For example, a 4-20mA transducer conditioning circuit may use an op-amp, RC filter, and Analog to Digital Converter (ADC) in the signal chain. Performance over production volume and thermal environments is deterministic provided workmanship is maintained. Using qualification and acceptance testing answers a question that should have been closed in development. That&rsquo;s compliance. Tailoring is not only removing acoustic testing for your avionics box, it&rsquo;s substituting physics for finite time and resources.</p>
+<p>I have yet to see an organization willing to redesign a unit that fails qualification; flight hardware is already in production and the schedule doesn&rsquo;t account for new hardware development spins. Verifying the design in qualification is an expensive way to force design margin concessions, find software workarounds, and risk large schedule slips. It&rsquo;s compliance theatre disguised as &ldquo;space is hard&rdquo;. Engineers who mistake compliance for competence go into testing without knowing they are going to pass.</p>
+<h1 id="the-risk-reduction-chain">The Risk Reduction Chain<a hidden class="anchor" aria-hidden="true" href="#the-risk-reduction-chain">#</a></h1>
+<p>Development testing is the only time an engineer can change the design easily. Acceptance testing damages the unit under test, consuming design life verifying workmanship. It does not indicate life remaining in the unit. Qualification shows life remaining after damage from acceptance. Qualification is testing the entire process of building flight hardware. Drill a hole in the qual unit for a thermocouple not in the flight design and you’ve invalidated qualification. Both acceptance and qualification assume the design meets specification requirements. The question is whether the flight units can be produced at equivalent quality to the qual unit and have useful life after environmental stress. Using acceptance and qualification to prove a design meets requirements admits the performance was unknown. Flight hardware production is already committed before qualification begins. Requirements verification is a property of the design; close it there.</p>
+<h1 id="sharpen-the-axe-first">Sharpen The Axe First<a hidden class="anchor" aria-hidden="true" href="#sharpen-the-axe-first">#</a></h1>
+<p>You must know the answer before you conduct the test. Bring-up testing is the most important testing you will ever do on an avionics design. Many engineers approach it at the surface level: my sensor reads accurately on the lab bench with the one board I have. It&rsquo;s statistically insignificant hope. This is the time to beat the hell out of the design and verify your requirements.</p>
+<p>SMC gives you, the engineer, the power to do this: &ldquo;<em>Development tests should be used to confirm structural and performance margins, manufacturability, testability, maintainability, reliability, life expectancy, and compatibility with system safety. Where practical, development tests should be conducted over a range of operating conditions that exceeds the design limits to identify marginal capabilities and marginal design features</em>&rdquo; (SMC-S-016, §4.2.1). §6.2.2 places electrical and mechanical performance demonstration explicitly in development, alongside risk reduction, before the design is committed to production. Analysis verifies requirements derived from deterministic physics so you can divert test resources where they reduce the most risk.</p>
+<p>How do you sharpen the axe? Between the Preliminary Design Review (PDR) and Critical Design Review (CDR) is the window. An engineering model unit with form, fit, and function of the intended flight design will operate just like the flight unit. The engineering model confirms performance; it does not confirm environmental survivability. Leave workmanship and environmental margin verification to acceptance and qualification. Engineers who wait for flight hardware to verify the design to requirements have missed the only opportunity to mitigate failures without great pain. Testing early to understand your design instead of testing for compliance will give you control of your schedule and risk aperture. Once you gain control of the design, acceptance and qualification are free to focus on what only they can find.</p>
+<h1 id="testing-like-you-fly-is-an-excuse">Testing Like You Fly Is An Excuse<a hidden class="anchor" aria-hidden="true" href="#testing-like-you-fly-is-an-excuse">#</a></h1>
+<p>Test like you fly: It sounds professional. It sounds reasonable. It is also why some organizations build a culture of hope. &ldquo;<em>These parameters shall be varied throughout their specification ranges and the sequences expected in flight operation</em>&rdquo; (SMC-S-016, §6.3.2.2). The test like you fly methodology implied is at the external interface to the device under test. This only applies to contractual requirements, and those can be tailored. Self-imposed design requirements aren&rsquo;t covered by SMC or §6.3.2.2; they need good engineering.</p>
+<p>An engineer implements a Low-Voltage Differential Signal (LVDS) driver operating at 200MHz. Implementing test like you fly, the acceptance and qualification automated functional test racks perform their LVDS tests at 200 MHz. The LVDS channel passes easily; units are installed on the vehicles. Then, vehicle level thermal cycling shows an LVDS channel failing. Root cause investigation finds that several other acceptance tested units exhibit the same failure mode but the tests indicate passing hardware: solder cracks in the LVDS differential pair routing. A solder crack can form a capacitor in series with the signal path. Low-frequency signals are blocked while high-frequency signals can pass through. Genuinely a bad time to be a responsible engineer of this hardware.</p>
+<p>How was the solder crack failure missed when functional testing operated at flight performance? Testing like you fly is an excuse for not thinking. When I work with the test engineer on my hardware test methodology I am asking one question: &ldquo;How would I know this signal path is intact?&rdquo; versus &ldquo;how does it fly&rdquo;. In development I performed the analysis to verify operation at speed. For automated functional testing in acceptance and qualification I explicitly aim to verify the signal path: acceptance and qualification are going to damage my unit. Blindly testing to §6.3.2.2 produced worse test coverage than critical thinking and tailoring. Know what you are looking for before you conduct the test.</p>
+<h1 id="the-engineer-owns-this">The Engineer Owns This<a hidden class="anchor" aria-hidden="true" href="#the-engineer-owns-this">#</a></h1>
+<p>Two hours of inserting myself as the responsible engineer showed that three years of non-conformance tickets and more than one year of schedule slip across production units could have been avoided. Damaged hardware masked by test-like-you-fly ideology installed on vehicles was also avoidable with ownership, not process conformity. These patterns are not isolated incidents. New engineers learn from experienced engineers what is acceptable. This applies beyond SMC; culture is an organism that does not default to effective; you have to construct it deliberately.</p>
+<p>Following a defined process like SMC doesn&rsquo;t guarantee risk reduction. Technical debt comes due when you scale hardware production: schedule slips, non-conformance triage, workarounds, cultural atrophy, and mission risk. The safest vehicle is one that never leaves the lab. Not understanding your design prior to qualification and production. Unacceptable.</p>
+<p>What is acceptable? Risk you understand is risk you control; risk you are naive to owns your company. Engineers need ownership and agency to treat every requirement, every test, and every disposition as an extension of their reputation. Engineers who own their products take judgement calls seriously. Ownership allows them to build a production system that catches what is necessary instead of what feels safe. When hardware I owned flew, I knew it would work, and any failure would have to be something I couldn&rsquo;t have prevented in the lab.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/">Bryce Salmi</a></span> · 
+        <a href="/index.xml">RSS</a> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
