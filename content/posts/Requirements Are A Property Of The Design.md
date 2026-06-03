@@ -1,19 +1,10 @@
 ---
-categories:
-  - "[[Posts]]"
 author: Bryce Salmi
 date: 2026-06-03
-url:
-created: 2026-06-03
-published:
-topics:
-  - SMC-S-016
-  - Qualification
-  - Acceptance
-status:
-Title: Requirements Are A Property Of The Design
-Summary: Three responsible engineers and a full qualification campaign missed a circuit that was 3x worse than its requirement. Two hours in Excel found it. Requirements verification is a property of the design, not the test.
-draft: "false"
+draft: false
+title: Requirements Are A Property Of The Design
+description: "Three responsible engineers and a full qualification campaign missed a circuit that was 3x worse than its requirement. Two hours in Excel found it."
+summary: "Three responsible engineers and a full qualification campaign missed a circuit that was 3x worse than its requirement. Two hours in Excel found it. Requirements verification is a property of the design, not the test."
 ---
 Every other functional test would fail. The sensor interface error was out of bounds; nominal as it turns out. The technician writes a discrepancy ticket and moves on to another work order. This unit will pause testing for several days and sometimes several weeks. The responsible engineer would disposition the discrepancy use-as-is without even plotting the time-series data. The design engineer had attributed the out-of-bounds performance to noise, failing to realize this was a circuit that didn’t always meet requirements. Every responsible engineer since had inherited that disposition.
 
