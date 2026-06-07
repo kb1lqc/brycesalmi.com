@@ -28,6 +28,3 @@ params:
       Contact me at [bryce@brycesalmi.com](mailto:bryce@brycesalmi.com).
   footer:
     text: '[RSS](/index.xml)'
-  socialIcons:
-    - name: linkedin
-      url: "https://www.linkedin.com/in/brycesalmi/"
