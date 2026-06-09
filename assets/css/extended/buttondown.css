@@ -1,0 +1,49 @@
+.buttondown-subscribe {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.buttondown-subscribe p {
+  margin: 0 0 1rem;
+}
+
+.embeddable-buttondown-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.embeddable-buttondown-form input[type="email"] {
+  flex: 1 1 220px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.embeddable-buttondown-form input[type="submit"] {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.embeddable-buttondown-form input[type="submit"]:hover {
+  background: var(--border);
+}
+
+.buttondown-powered {
+  width: 100%;
+  margin: 8px 0 0 !important;
+  font-size: 0.8rem;
+}
