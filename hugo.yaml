@@ -20,11 +20,11 @@ menu:
       weight: 20
 
 params:
-  description: "Electrical engineer. Hardware that has flown on Falcon 9, Cargo Dragon, Crew Dragon, and Terran 1."
+  description: "High-reliability electrical systems architecture and engineering leader with proven hardware heritage on Falcon 9, Crew Dragon, and Terran 1."
   homeInfoParams:
     Title: "Bryce Salmi"
     Content: >
-      My hardware has flown to space on Falcon 9 thousands of times, Cargo Dragon, Crew Dragon, and Terran 1. Relativity Space hired me as the 17th employee and first avionics engineer. Terran 1's avionics was a blank confluence page and a desire. I write about what I find interesting. It forces me to decompose my thoughts.
+      Engineering leader specializing in high-reliability electrical systems and avionics architecture with proven hardware on Falcon 9, Crew Dragon, and Terran 1; I build organizations that work toward the global optimum, internalizing responsible engineering leadership. I hold rigorous standards for hardware design, engineering culture, and cross-discipline outcomes. I write about challenges I deliberately faced.
       Contact me at [bryce@brycesalmi.com](mailto:bryce@brycesalmi.com).
   footer:
     text: '[RSS](/index.xml)'
